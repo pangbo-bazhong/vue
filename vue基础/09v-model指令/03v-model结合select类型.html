@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			<select v-model="fruit">
+				<option value="苹果">苹果 </option>
+				<option value="香蕉">香蕉 </option>
+				<option value="榴莲">榴莲 </option>
+				<option value="西瓜">西瓜 </option>
+			</select>
+			<div>我选择的水果是：{{fruit}}</div>
+			
+			
+			<select v-model="fruits" multiple="multiple">
+				<option value="苹果">苹果 </option>
+				<option value="香蕉">香蕉 </option>
+				<option value="榴莲">榴莲 </option>
+				<option value="西瓜">西瓜 </option>
+			</select>
+			<div>我选择的水果是：{{fruits}}</div>
+		</div>
+	</body>
+	<!--
+		v-model绑定radio时，可以不添加name为一组
+	-->
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script>
+		let vue = new Vue({
+			el: "#app",
+			data: {
+				fruit: "香蕉",
+				fruits: []
+			}
+		})
+	</script>
+
+</html>

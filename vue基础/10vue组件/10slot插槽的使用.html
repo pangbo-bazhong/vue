@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn>《西游记》</cpn>
+			<submit_cpn></submit_cpn>
+			<submit_cpn>
+				<template v-slot:header>段誉</template>
+				<template #footer>六脉神剑</template>
+				<template #other="props">
+					{{props.user.name}}
+				</template>
+			</submit_cpn>
+			
+		</div>
+		
+		
+		<template id="cpn">
+			<div>
+				<span>我最喜欢的书本是：<slot></slot></span>
+			</div>
+		</template>
+		
+		
+		<template id="submit_cpn">
+			<div>
+				<div>
+					<slot name="header">{{name}}</slot>
+				</div>
+				
+				<div>
+					<slot name="footer">{{wugong}}</slot>
+				</div>
+				
+				<div>
+					<slot name="other" :user="user">{{wugong}}</slot>
+				</div>
+			</div>
+		</template>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		let cpn = Vue.extend({
+			template: "#cpn"
+		})
+		
+		let submit_cpn = Vue.extend({
+			template: "#submit_cpn",
+			data(){
+				return{
+					"name":"乔峰",
+					"wugong":"降龙十八掌",
+					"user":{
+						"name":"虚竹",
+						"wugong":"天山折梅手"
+					}
+				}
+			}
+		})
+		
+		
+		let app = new Vue({
+			el: "#app",
+			components:{
+				cpn,
+				submit_cpn
+			}
+		})
+	</script>
+</html>

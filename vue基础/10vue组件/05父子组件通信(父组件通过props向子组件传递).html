@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			<cpn :name="tianlong.name" :wugong-name="tianlong.wugongName" :brother="tianlong.brother"></cpn>
+
+			<cpn :name="shuihu.name" :wugong-name="shuihu.wugongName" :brother="shuihu.brother"></cpn>
+			
+		</div>
+
+		<template id="cpn">
+			<div>
+				<p>我的名字是：{{name}}</p>
+				<p>我的武功最强是：{{wugongName}}</p>
+				我的兄弟有：
+				<ul v-for="index in brother">
+					<li>{{index}}</li>
+				</ul>
+			</div>
+		</template>
+	</body>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script>
+		Vue.component('cpn', {
+			template: '#cpn',
+			props: {
+				"name": {
+					type: String
+				},
+				"wugong-name": {
+					type: String
+				},
+				"brother": {
+					type: Array
+				}
+			}
+		})
+
+		let app = new Vue({
+			el: "#app",
+			data: {
+				"tianlong": {
+					"name": "乔峰",
+					"wugongName": "降龙十八掌",
+					"brother": ['段誉', '虚竹']
+				},
+				"shuihu":{
+					"name": "武松",
+					"wugongName": "鸳鸯连环踢",
+					"brother": ['鲁智深', '林冲']
+				}
+
+			}
+		})
+	</script>
+
+</html>

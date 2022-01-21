@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<img :src="src" alt="图片未找到"/>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				"src": "https://www.baidu.com/img/PC_9635cf8315d36e77d4ebb2829d33fc75.gif"
+			}
+		})
+	</script>
+</html>

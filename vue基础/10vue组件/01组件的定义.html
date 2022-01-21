@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			
+			<conf></conf>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		let conf = Vue.extend({
+			template:`
+				<div>我是一个hello标题<div>这是内容</div></div>
+				
+				
+			`		
+		})
+		
+		Vue.component('conf',conf);
+	
+	let app = new Vue({
+		el:"#app"
+	})
+	</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn2></cpn2>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		let cpn1 = Vue.extend({
+			template:`
+			<div>
+				<span>这是子组件标题</span>
+				<h1>好大呀</h1>
+			</div>
+			`
+		})
+		
+		Vue.component('cpn2',{
+			template: `
+				<div>这是父组件<p>我是p标签</p>
+					<cpn1></cpn1>
+				</div>
+			`,
+			components:{
+				'cpn1': cpn1
+			}
+		})
+	
+		let app = new Vue({
+			el:"#app",
+		})
+	</script>
+</html>

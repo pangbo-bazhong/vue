@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--.stop修饰符的使用-->
+		<div id="app">
+			<div @click="divClick">
+				这个可以点
+				<button @click.stop="btnClick">按钮1</button>
+			</div>
+
+		</div>
+		<br />
+		<!--.prevent修饰符的使用-->
+		<form action="baidu">
+			<input type="submit" value="提交" @click.prevent="submitClick" />
+		</form>
+
+		<form action="baidu" @submit.prevent="submitClick">
+
+			<input type="submit" value="注册">
+		</form>
+		
+		<br />
+		<!--监听某个键盘的键帽-->
+		<input type="text" @keyup.enter="enter" />
+		
+		<br />
+		
+		<!--.once修饰符的使用-->
+		<button @click.once="btnOnce">按钮2</button>
+
+	</body>
+	<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			methods: {
+				btnClick() {
+					console.log("Hello,World");
+				},
+				divClick() {
+					console.log("div被点击了");
+				},
+				submitClick() {
+					console.log("提交按钮被点击了");
+				},
+				enter(){
+					console.log("enter健被点击了")
+				},
+				btnOnce(){
+					console.log("按钮只能被点击一次")
+				}
+			}
+		})
+	</script>
+
+</html>

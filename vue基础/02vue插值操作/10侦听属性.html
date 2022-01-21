@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="user_info.name">
+		</div>
+	</body> 
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				"user_info": {
+					"name": "张三",
+					"age": 27
+				}
+			},
+			watch:{
+				'user_info.name': function(){
+					console.log("你好");
+				}
+			}
+		})
+	</script>
+</html>

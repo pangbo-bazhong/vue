@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			{{html}}
+			<p v-html="html"></p>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="js/jquery-3.6.0.js" ></script>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				"html": "<span style='color:red'>这是红色的字体</span>"
+			}
+		})
+	</script>
+</html>

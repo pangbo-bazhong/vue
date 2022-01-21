@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			
+			<tem @btn-click="btnclick"></tem>
+		</div>
+		
+		<template id="tem">
+			<diV>
+				<button v-for="item in params" @click="ctnClick(item)">{{item.name}}</button>
+				
+			</diV>
+		</template>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		let tem = Vue.extend({
+			template: "#tem",
+			data(){
+				return {
+					params: [
+						{"id":1,"name":"三国演义"},
+						{"id":2,"name":"西游记"},
+						{"id":3,"name":"水浒传"},
+						{"id":4,"name":"红楼梦"}
+					]
+				}
+			},
+			methods:{
+				ctnClick(item){
+					this.$emit('btn-click',item);
+				}
+			}
+		})
+		
+		let vue = new Vue({
+			el: "#app",
+			components: {
+				tem
+			},
+			methods:{
+				btnclick(item){
+					console.log("我点击了一次",item);
+				}
+			}
+		})
+		
+		
+	</script>
+</html>

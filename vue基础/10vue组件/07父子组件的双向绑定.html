@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<tem :child-num1="num1" :child-num2="num2" @change-input2="input2" @change-input1="input1"></tem>
+		</div>
+		
+		
+		<template id= "tem">
+			<div>
+				<p>父级数据：{{childNum1}}</p>
+				<p>子级数据：{{childData1}}</p>
+				<p><input type="text" :value="childData1" @input="changeInput1"/></p>
+				
+				
+				<p>父级数据：{{childNum2}}</p>
+				<p>子级数据：{{childData2}}</p>
+				<p><input type="text" v-model="childData2"/></p>
+			</div>
+		</template>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		Vue.component('tem',{
+			template: "#tem",
+			props:{
+				childNum1: Number,
+				childNum2: Number
+			},
+			data(){
+				return{
+					childData1: this.childNum1,
+					childData2: this.childNum2
+				}
+			},
+			methods:{
+				changeInput1(event){
+					this.childData1=event.target.value;
+					
+					this.$emit('change-input1',this.childData1);
+					
+					this.$emit('change-input2',this.childData1 * 100);
+					
+					this.childData2=event.target.value * 100;
+					
+				}
+			},
+			watch:{
+				childData2(oldValue, newValue){
+					console.log(oldValue,newValue);
+				}
+			}
+		})
+		
+		
+		let app = new Vue({
+			el: "#app",
+			data:{
+				num1: 1,
+				num2: 2
+			},
+			methods:{
+				input2(value){
+					this.num2 = parseInt(value);
+				},
+				input1(value){
+					this.num1 = parseInt(value);
+				}
+			}
+		})
+		
+	</script>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<span v-once>这个将不会改变：{{message}}</span>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src="js/jquery-3.6.0.js" ></script>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				"message": "这是一个信息"
+			}
+		})
+	</script>
+</html>

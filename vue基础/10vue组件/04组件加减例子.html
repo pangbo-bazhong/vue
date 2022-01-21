@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<div id="app">
+			<tem></tem>
+			<tem></tem>
+			<tem></tem>
+		</div>
+
+		<template id="tem">
+			<div>
+				<button @click="dec">-</button>
+				<span>{{num}}</span>
+				<button @click="add">+</button>
+			</div>
+		</template>
+	</body>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script>
+		let app = new Vue({
+			el: "#app",
+			components: {
+				'tem': {
+					template: "#tem",
+					data() {
+						return {
+							"num": 1
+						}
+					},
+					methods: {
+						dec() {
+							this.num--;
+						},
+						add() {
+							this.num++;
+						}
+					}
+				}
+
+			}
+		})
+	</script>
+
+</html>

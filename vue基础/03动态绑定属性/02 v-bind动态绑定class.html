@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.red{
+			color: red;
+		}
+		.font{
+			font-family: "宋体";
+		}
+		.blue{
+			color: blue;
+		}
+		.underline{
+			text-decoration: underline;
+		}
+	</style>
+	<body>
+		<div id="app">
+			<p class="font"  :class="{red: isRed}">这是我的</p>
+			<p :class="getClasses()">天下第一</p>
+			<button @click="change">变色</button>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				"isRed": true,
+				"isBlue": true,
+				"isUnderLine": true
+			},
+			methods: {
+				change: function(){
+					this.isRed = !this.isRed;
+				},
+				getClasses: function(){
+					return {blue: this.isBlue,underline: this.isUnderLine};
+				}
+			}
+		})
+	</script>
+</html>

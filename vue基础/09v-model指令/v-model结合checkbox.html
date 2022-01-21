@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			<label for="agree">
+				<input type="checkbox" name="isAgree" v-model="agree" />同意
+			</label>
+			<div>你的选择是：{{agree}}</div>
+			<button :disabled="!agree">下一步</button>
+			-----------------------------------------------------------
+			<br/>
+			<label for="">
+				<input type="checkbox" value="唱" v-model="hobbis" />唱
+				<input type="checkbox" value="跳" v-model="hobbis" />跳
+				<input type="checkbox" value="rap" v-model="hobbis" />rap
+				<input type="checkbox" value="篮球" v-model="hobbis" />篮球
+			</label>
+			
+			<br/>-----------------------------------------------------------<br/>
+			<label v-for="item in hobbisValue" :for="item">
+				<input type="checkbox" :value="item" :id="item" v-model="hobbis" />{{item}}
+			</label>
+			
+			<div>我的爱好是：{{hobbis}}</div>
+		</div>
+	</body>
+	<!--
+		v-model绑定radio时，可以不添加name为一组
+	-->
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script>
+		let vue = new Vue({
+			el: "#app",
+			data: {
+				agree: false,
+				hobbis:[],
+				hobbisValue:["唱","跳","rap","篮球","music","花姑娘"]
+			}
+		})
+	</script>
+
+</html>

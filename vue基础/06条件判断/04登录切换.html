@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="app">
+			<label v-if="type === 'username'">
+				<label>账号登录</label>
+				<input type="text" placeholder="账号登录" name="username" key="username"/>
+				<button @click="change">切换类型</button>
+			</label>
+			<label v-else>
+				<label>邮箱登录</label>
+				<input type="text" placeholder="邮箱登录" name="email" key="email"/>
+				<button @click="change">切换类型</button>
+			</label>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				"type": "username"
+			},
+			methods: {
+				change() {
+					this.type = this.type === "username" ? "email" : "username";
+				}
+			}
+		})
+	</script>
+
+</html>

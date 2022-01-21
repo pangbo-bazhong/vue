@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+				<cpn ref="cpn1"></cpn>	
+				<tem></tem>
+				<cpn ref="cpn2"></cpn>	
+				<button @click="show">点击获得子组件消息</button>
+				<button @click="refs">测试refs的作用</button>
+		</div>
+		
+		
+		<template id="cpn">
+			<div>
+				<p>这是一个子组件</p>
+			</div>
+		</template>
+		
+		<template id="tem">
+			<div>
+				
+			</div>
+		</template>
+		
+	</body>
+	<script type="text/javascript" src="../js/vue.js" ></script>
+	<script>
+		let cpn = Vue.extend({
+			template: '#cpn',
+			data(){
+				return{
+					"msg": "这是一条消息"
+				}
+			},
+			methods:{
+				showMsg(data){
+					console.log(this.msg,data);
+				}
+			}
+		})
+		
+		let tem = Vue.extend({
+			template: '#tem',
+			data(){
+				return{
+					"tem":"东汉末年分三国"
+				}
+			}
+		})
+		
+		
+		let app = new Vue({
+			el:"#app",
+			components:{
+				cpn,
+				tem
+			},
+			methods:{
+				show(){
+					this.$children[0].showMsg("hello");
+					console.log(this.$children[1].tem);
+				},
+				refs(){
+					this.$refs.cpn1.showMsg("cpn1");
+					this.$refs.cpn2.showMsg("cpn2");
+				}
+			}
+		})
+	</script>
+</html>

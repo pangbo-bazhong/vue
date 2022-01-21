@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<div id="app">
+			<tem></tem>
+		</div>
+
+		<template id="tem">
+			<div>
+				<span>这是我的简写模块</span>
+				<h2>{{message}}</h2>
+			</div>
+		</template>
+	</body>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script>
+		let app = new Vue({
+			el: "#app",
+			components: {
+				'tem': {
+					template: "#tem",
+					data() {
+						return {
+							"message": "hello,消息"
+						}
+					}
+				}
+
+			}
+		})
+	</script>
+
+</html>

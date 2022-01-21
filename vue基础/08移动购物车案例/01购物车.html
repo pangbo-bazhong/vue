@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		th {
+			width: 150px;
+		}
+	</style>
+
+	<body>
+		<div id="app">
+			<div style="margin: auto auto;display: table;" v-if="books.length">
+				<table cellpadding="0" cellspacing="0" border="1">
+					<thead>
+						<tr>
+							<th></th>
+							<th>书籍名称</th>
+							<th>出版日期</th>
+							<th>价格</th>
+							<th>
+
+								购买数量
+
+							</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(book,index) in books">
+							<th>{{index+1}}</th>
+							<th>{{book.bookName}}</th>
+							<th>{{book.date}}</th>
+							<th>
+
+								{{book.price | getPrice}}
+
+							</th>
+							<th>
+								<button @click="decrement(book.num,index)" :disabled="book.num <=1">-</button> {{book.num}}
+								<button @click="increment(book.num,index)" :disabled="book.num >=10">+</button>
+							</th>
+							<th><button @click="remove(index)">移除</button></th>
+						</tr>
+					</tbody>
+				</table>
+				<div>总价格为：{{totalPrcie()}}</div>
+			</div>
+			<div v-else>
+				购物车为空
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+	<script>
+		let vue = new Vue({
+			el: "#app",
+			data: {
+				books: [{
+						"bookName": "《算法导论》",
+						"date": "2012-10-3",
+						"price": 82.00,
+						"num": 1
+					},
+					{
+						"bookName": "《Unix编程艺术》",
+						"date": "2006-5-3",
+						"price": 59.00,
+						"num": 1
+					},
+					{
+						"bookName": "《编程珠玑》",
+						"date": "2010-3-21",
+						"price": 156.32,
+						"num": 1
+					},
+					{
+						"bookName": "《代码大全》",
+						"date": "2015-9-3",
+						"price": 132.00,
+						"num": 1
+					}
+				]
+			},
+			filters: {
+				getPrice(price) {
+					return "￥" + price.toFixed(2)
+				}
+			},
+			methods: {
+				decrement(num, index) {
+					if(num > 1) {
+						this.books[index].num = --num;
+					}
+				},
+				increment(num, index) {
+					if(num < 10) {
+						this.books[index].num = ++num;
+					}
+				},
+				totalPrcie() {
+
+					let total = this.books.reduce(function(total, book) {
+						return add(total, mull(book.price, book.num));
+					}, 0)
+
+					/*$.each(this.books, function(index, book) {
+						console.log(book);
+						single = mull(book.price, book.num);
+						total = add(total, single);
+					})*/
+					return "￥" + total.toFixed(2);
+				},
+				remove(index) {
+					this.books.splice(index, 1);
+				}
+			}
+		})
+
+		function add(param1, param2) {
+			var r1, r2, m;
+			try {
+				r1 = param1.toString().split(".")[1].length
+			} catch(e) {
+				r1 = 0
+			}
+			try {
+				r2 = param2.toString().split(".")[1].length
+			} catch(e) {
+				r2 = 0
+			}
+			m = Math.pow(10, Math.max(r1, r2))
+			return(param1 * m + param2 * m) / m
+		}
+
+		function mull(param1, param2) {
+			var m = 0,
+				s1 = param1.toString(),
+				s2 = param2.toString();
+			try {
+				m += s1.split(".")[1].length
+			} catch(e) {}
+			try {
+				m += s2.split(".")[1].length
+			} catch(e) {}
+			return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+		}
+	</script>
+
+</html>

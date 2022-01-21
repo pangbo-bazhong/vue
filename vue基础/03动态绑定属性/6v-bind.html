@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#hello{
+			color:blue;
+		}
+	</style>
+	<body>
+		<div id="app">
+			<p v-bind:id="message">燕人张飞在此</p>
+			<p v-bind:disabled="red">可以显示</p>
+			<a v-bind:href="url">这是一个链接</a>
+			<p :title="title">鼠标秒上来看看</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-3.6.0.js" ></script>
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				"message": "hello",
+				"red": true,
+				"url": "http://www.baidu.com",
+				"title": "看到了吧"
+			}
+		})
+	</script>
+</html>
